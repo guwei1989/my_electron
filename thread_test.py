@@ -5,6 +5,7 @@ import threading
 import multiprocessing, Queue
 import thread
 import time
+import os
 from collections import Iterator
 
 l = threading.Lock()
@@ -33,29 +34,6 @@ class Mythread(threading.Thread):
             i += 1
             # l.release()
         print (i)
-
-def process_test(q):
-    q.put("test process")
-
-q =Queue()
-p_1 = multiprocessing.Process(target=process_test, args=(q,))
-p_1.start()
-print (q.get())
-p_1.join()
-# def add(a, b):
-#     global L1
-#     L1 += range(a, b)
-#     print (L1)
-#
-#
-# process_1 = multiprocessing.Process(target=add, args=(10, 20))
-# process_2 = multiprocessing.Process(target=add, args=(0, 10))
-#
-# process_1.start()
-# process_2.start()
-
-# process_1.join()
-# process_2.join()
 
 
 # def println(msg):
@@ -121,6 +99,8 @@ a = yield_test()
 for i in range(5):
     print (a.next())
 
+
+print (os.path.dirname(os.path.abspath(__file__)))
 
 # if __name__ == "__main__":
 # thread_list = list()
