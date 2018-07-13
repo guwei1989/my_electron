@@ -1,4 +1,5 @@
-# coding = utf-8
+#!/usr/bin/env python
+# coding:utf-8
 
 
 def list_ob(n):
@@ -30,14 +31,17 @@ def produce(c):
 
 
 if __name__ == "__main__":
-    gen_obj = list_ob(30)
-
-    print (dir(gen_obj))
-    print next(gen_obj)
-
-    print type(gen_obj)
-    # for a in gen_obj:
-    #     print (a)
-
+    # gen_obj = list_ob(30)
+    #
+    # print (dir(gen_obj))
+    # print next(gen_obj)
+    #
+    # print type(gen_obj)
+    # # for a in gen_obj:
+    # #     print (a)
+    #
     c = consumer()
-    produce(c)
+    # produce(c)
+    b=c.next()
+    a=c.send(1)
+    print a
