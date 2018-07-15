@@ -2,27 +2,29 @@
 # coding:utf-8
 
 import socket
-import sys, traceback
+import sys
+import traceback
 import threading
+import time
 
 
 def client_test(ip, textport):
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    c = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
     port = int(textport)
 
-    s.connect((ip, port))
+    c.connect((ip, port))
 
-    data = "this is send info"
-    s.send(data)
+    data = "this is client send content"
+    c.send(data)
 
     print "data had send, looking for replies..."
     while 1:
-        buf = s.recv(2048)
+        buf = c.recv(2048)
         if not len(buf):
             break
 
-        print "reply data %s" % buf
+        print "reply data is: %s" % buf
 
 
 def server_test():
@@ -33,13 +35,15 @@ def server_test():
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
     s.bind(addr)
-    s.listen(10)
+    s.listen(5)
     # Step4: 监听该端口上的连接
     while 1:
         try:
             conn, address = s.accept()
             char = conn.recv(2048)
-            s.send("Data is received succeefully from {ip}, info: {info}".format(ip=address, info=char))
+            print "server recv info: %s" % char
+            conn.send(
+                "server has received succeefully, addr is {addr} content is: {info}".format(addr=address, info=char))
         except:
             print "traceback"
             traceback.print_exc()

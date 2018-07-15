@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding:utf-8
 
-n
+
 # 递归方式实现 生成前项
 def feibonaqi(n):
     lis = []
