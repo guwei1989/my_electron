@@ -42,6 +42,6 @@ if __name__ == "__main__":
     #
     c = consumer()
     # produce(c)
-    b=c.next()
-    a=c.send(1)
+    b = c.next()
+    a = c.send(1)
     print a

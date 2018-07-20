@@ -21,8 +21,6 @@ def new_t(name, delay):
         print ("This is %s" % name, "i=%d" % i)
 
 
-
-
 class Mythread(threading.Thread):
     def __init__(self):
         threading.Thread.__init__(self)
@@ -35,6 +33,12 @@ class Mythread(threading.Thread):
             # l.release()
         print (i)
 
+
+t1 = Mythread()
+# t1.daemon = True
+
+t1.start()
+t1.join()
 
 # def println(msg):
 #     log_lock.acquire()
@@ -74,6 +78,11 @@ def do_something(msg):
     print ("hello %s" % msg)
 
 
+# def init(func):
+#     def inner():
+
+# do_something("py")
+
 # 列表生成式
 lis = [x * x for x in range(10)]
 
@@ -95,12 +104,12 @@ def yield_test():
         yield i
 
 
-a = yield_test()
-for i in range(5):
-    print (a.next())
-
-
-print (os.path.dirname(os.path.abspath(__file__)))
+# a = yield_test()
+# for i in range(5):
+#     print (a.next())
+#
+#
+# print (os.path.dirname(os.path.abspath(__file__)))
 
 # if __name__ == "__main__":
 # thread_list = list()
